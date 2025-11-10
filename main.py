@@ -57,6 +57,7 @@ def is_set(c1: Card, c2: Card, c3: Card) -> bool:
 
 
 def find_sets_brute_force(cards: set[Card]) -> list[set[Card]]:
+    cards = set(cards)
     assert len(cards) >= 3, "Need at least three cards."
     triples = [
         (c1, c2, c3)
@@ -96,8 +97,9 @@ def complement(c1: Card, c2: Card) -> Card:
 
 
 def find_sets_n2(cards: set[Card]) -> list[set[Card]]:
-    assert len(cards) >= 3, "Need at least three cards."
     cards = set(cards)
+    assert len(cards) >= 3, "Need at least three cards."
+
     pairs = [
         (c1, c2)
         for c1 in cards
