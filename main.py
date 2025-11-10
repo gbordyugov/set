@@ -43,6 +43,18 @@ cards = [
 ]
 
 
+def is_set(c1: Card, c2: Card, c3: Card) -> bool:
+    cards = {c1, c2, c3}
+    colours = {c.colour for c in cards}
+    shapes = {c.shape for c in cards}
+    numbers = {c.number for c in cards}
+    patterns = {c.pattern for c in cards}
+
+    properties = [colours, shapes, numbers, patterns]
+
+    return all(len(p) == 1 or len(p) == 3 for p in properties)
+
+
 def main():
     print("Hello from set!")
 
