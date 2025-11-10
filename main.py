@@ -26,7 +26,7 @@ class Pattern(Enum):
     BLANK = 'blank'
 
 
-@dataclass
+@dataclass(frozen=True)
 class Card:
     colour: Colour
     shape: Shape
