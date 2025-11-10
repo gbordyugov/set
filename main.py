@@ -76,22 +76,22 @@ def complement(c1: Card, c2: Card) -> Card:
     if c1.colour == c2.colour:
         colour = c1.colour
     else:
-        colour = list(set(Colour) - {c1.colour, c2.colour})[0]
+        colour, = set(Colour) - {c1.colour, c2.colour}
 
     if c1.shape == c2.shape:
         shape = c1.shape
     else:
-        shape = list(set(Shape) - {c1.shape, c2.shape})[0]
+        shape, = set(Shape) - {c1.shape, c2.shape}
 
     if c1.number == c2.number:
         number = c1.number
     else:
-        number = list(set(Number) - {c1.number, c2.number})[0]
+        number, = set(Number) - {c1.number, c2.number}
 
     if c1.shading == c2.shading:
         shading = c1.shading
     else:
-        shading = list(set(Shading) - {c1.shading, c2.shading})[0]
+        shading, = set(Shading) - {c1.shading, c2.shading}
 
     return Card(colour=colour, shape=shape, number=number, shading=shading)
 
