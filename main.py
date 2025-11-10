@@ -68,6 +68,53 @@ def find_sets_brute_force(cards: set[Card]) -> list[set[Card]]:
     return [t for t in triples if is_set(*t)]
 
 
+
+def complement(c1: Card, c2: Card) -> Card:
+    assert c1 != c2, "Two distinct cards are expected."
+
+    if c1.colour == c2.colour:
+        colour = c1.colour
+    else:
+        colour = list(set(Colour) - {c1.colour, c2.colour})[0]
+
+    if c1.shape == c2.shape:
+        shape = c1.shape
+    else:
+        shape = list(set(Shape) - {c1.shape, c2.shape})[0]
+
+    if c1.number == c2.number:
+        number = c1.number
+    else:
+        number = list(set(Number) - {c1.number, c2.number})[0]
+
+    if c1.shading == c2.shading:
+        shading = c1.shading
+    else:
+        shading = list(set(Shading) - {c1.shading, c2.shading})[0]
+
+    return Card(colour=colour, shape=shape, number=number, shading=shading)
+
+
+def find_sets_n2(cards: set[Card]) -> list[set[Card]]:
+    assert len(cards) >= 3, "Need at least three cards."
+    cards = set(cards)
+    pairs = [
+        (c1, c2)
+        for c1 in cards
+        for c2 in cards
+        if c1 < c2
+    ]
+
+    result = []
+
+    for c1, c2 in pairs:
+        c3 = complement(c1, c2)
+        if c3 in cards and c3 > c2:
+            result.append({c1, c2, c3})
+
+    return result
+
+
 def main():
     print("Hello from set!")
 
