@@ -100,18 +100,13 @@ def find_sets_n2(cards: set[Card]) -> list[set[Card]]:
     cards = set(cards)
     assert len(cards) >= 3, "Need at least three cards."
 
-    pairs = [
-        (c1, c2)
-        for c1 in cards
-        for c2 in cards
-        if c1 < c2
-    ]
+    pairs = [(c1, c2) for c1 in cards for c2 in cards if c1 < c2]
 
     result = []
 
     for c1, c2 in pairs:
         c3 = complement(c1, c2)
-        if c3 in cards and c3 > c2:
+        if c3 in cards and c2 < c3:
             result.append({c1, c2, c3})
 
     return result
