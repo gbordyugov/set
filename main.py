@@ -59,7 +59,7 @@ def is_set(c1: Card, c2: Card, c3: Card) -> bool:
 def find_sets_brute_force(cards: set[Card]) -> list[set[Card]]:
     assert len(cards) >= 3, "Need at least three cards."
     triples = [
-        {c1, c2, c3}
+        (c1, c2, c3)
         for c1 in cards
         for c2 in cards
         for c3 in cards
