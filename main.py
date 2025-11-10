@@ -110,11 +110,3 @@ def find_sets_n2(cards: set[Card]) -> list[set[Card]]:
             result.append({c1, c2, c3})
 
     return result
-
-
-def main():
-    print("Hello from set!")
-
-
-if __name__ == "__main__":
-    main()
