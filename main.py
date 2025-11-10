@@ -45,6 +45,7 @@ cards = [
 
 def is_set(c1: Card, c2: Card, c3: Card) -> bool:
     cards = {c1, c2, c3}
+    assert len(cards) == 3, "Need three distinct cards."
 
     colours = {c.colour for c in cards}
     shapes = {c.shape for c in cards}
