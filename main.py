@@ -5,13 +5,13 @@ from enum import Enum
 class Colour(Enum):
     RED = 'red'
     GREEN = 'green'
-    BLUE = 'blue'
+    PURPLE = 'purple'
 
 
 class Shape(Enum):
+    DIAMOND = 'diamond'
+    SQUIGGLE = 'squiggle'
     OVAL = 'oval'
-    RHOMBUS = 'rhombus'
-    WORM = 'worm'
 
 
 class Number(Enum):
@@ -20,10 +20,10 @@ class Number(Enum):
     THREE = 3
 
 
-class Pattern(Enum):
-    FILLED = 'filled'
-    HATCHED = 'hatched'
-    BLANK = 'blank'
+class Shading(Enum):
+    SOLID = 'solid'
+    STRIPED = 'striped'
+    OPEN = 'OPEN'
 
 
 @dataclass(frozen=True)
@@ -31,15 +31,15 @@ class Card:
     colour: Colour
     shape: Shape
     number: Number
-    pattern: Pattern
+    shading: Shading
 
 
 cards = [
-    Card(colour=c, shape=s, number=n, pattern=p)
+    Card(colour=c, shape=s, number=n, shading=sh)
     for c in Colour
     for s in Shape
     for n in Number
-    for p in Pattern
+    for sh in Shading
 ]
 
 
@@ -48,9 +48,9 @@ def is_set(c1: Card, c2: Card, c3: Card) -> bool:
     colours = {c.colour for c in cards}
     shapes = {c.shape for c in cards}
     numbers = {c.number for c in cards}
-    patterns = {c.pattern for c in cards}
+    shadings = {c.shading for c in cards}
 
-    properties = [colours, shapes, numbers, patterns]
+    properties = [colours, shapes, numbers, shadings]
 
     return all(len(p) == 1 or len(p) == 3 for p in properties)
 
