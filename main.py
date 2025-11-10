@@ -53,7 +53,7 @@ def is_set(c1: Card, c2: Card, c3: Card) -> bool:
     shadings = {c.shading for c in cards}
 
     properties = [colours, shapes, numbers, shadings]
-    return all(len(p) == 1 or len(p) == 3 for p in properties)
+    return all(len(p) != 2 for p in properties)
 
 
 def find_sets_brute_force(cards: set[Card]) -> list[set[Card]]:
